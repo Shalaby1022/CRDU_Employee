@@ -1,0 +1,43 @@
+﻿@model Employee
+
+<h2>Employee Details</h2>
+
+@if (Model != null)
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>Id</th>
+            <td>@Model.Id</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <th>Age</th>
+            <td>@Model.Age</td>
+        </tr>
+        <tr>
+            <th>Salary</th>
+            <td>@Model.Salary</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>@Model.Email</td>
+        </tr>
+        <tr>
+            <th>Office Id</th>
+            <td>@Model.OfficeId</td>
+        </tr>
+    </table>
+}
+else
+{
+    <p>Employee not found.</p>
+}
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+</p>

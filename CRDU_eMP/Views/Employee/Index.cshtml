@@ -1,0 +1,48 @@
+﻿@model List<Employee>
+
+<div class="container">
+    <h2 class="mb-4">Employee List</h2>
+
+    @if (Model.Count > 0)
+    {
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Email</th>
+                
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model)
+                {
+                    <tr>
+                        <td>@employee.Id</td>
+                        <td>@employee.Name</td>
+                        <td>@employee.Age</td>
+                        <td>@employee.Salary</td>
+                        <td>@employee.Email</td>
+                     
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Actions">
+                                <a href="@Url.Action("Details", new { id = employee.Id })" class="btn btn-sm btn-info">Details</a>
+                                <a href="@Url.Action("Edit", new { id = employee.Id })" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="@Url.Action("Delete", new { id = employee.Id })" class="btn btn-sm btn-danger">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No employees found.</p>
+    }
+
+    <p><a href="@Url.Action("Create")" class="btn btn-success">Create New Employee</a></p>
+</div>

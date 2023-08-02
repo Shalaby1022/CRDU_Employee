@@ -1,0 +1,36 @@
+﻿@model Employee
+
+<h2>Edit Employee</h2>
+
+@using (Html.BeginForm("Edit", "Employee", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+    <div class="form-group">
+        <label for="Name">Name</label>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <label for="Age">Age</label>
+        @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Age, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <label for="Salary">Salary</label>
+        @Html.TextBoxFor(m => m.Salary, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Salary, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <label for="Email">Email</label>
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <label for="OfficeId">Office Id</label>
+        @Html.TextBoxFor(m => m.OfficeId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.OfficeId, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary" })
+}
