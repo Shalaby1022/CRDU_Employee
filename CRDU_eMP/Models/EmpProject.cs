@@ -1,24 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CRDU_eMP.Models;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CRDU_eMP.Models
+public class EmpProject
 {
-    [PrimaryKey("EmpId", "ProjId")]
-    public class EmpProject
-    {
-        // Composite primary key
+    // Composite primary key
+    [Key, Column(Order = 1)]
+    public int EmpId { get; set; }
 
-       
+    [Key, Column(Order = 2)]
+    public int ProjId { get; set; }
 
-        public int EmpId { get; set; }
-        public int ProjId { get; set; }
+    [ForeignKey("Employee")]
+    public int WorkingHours { get; set; }
 
-        // Navigation properties for Employee and Project
-        public Employee Employee { get; set; }
-        public Project Project { get; set; }
-
-        [ForeignKey("WorkingHours")]
-        public int WorkingHours { get; set; }
-    }
-
+    // Navigation properties for Employee and Project
+    public Employee Employee { get; set; }
+    public Project Project { get; set; }
 }

@@ -13,7 +13,6 @@
                     <th scope="col">Age</th>
                     <th scope="col">Salary</th>
                     <th scope="col">Email</th>
-                
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -26,12 +25,11 @@
                         <td>@employee.Age</td>
                         <td>@employee.Salary</td>
                         <td>@employee.Email</td>
-                     
                         <td>
                             <div class="btn-group" role="group" aria-label="Actions">
-                                <a href="@Url.Action("Details", new { id = employee.Id })" class="btn btn-sm btn-info">Details</a>
-                                <a href="@Url.Action("Edit", new { id = employee.Id })" class="btn btn-sm btn-primary">Edit</a>
-                                <a href="@Url.Action("Delete", new { id = employee.Id })" class="btn btn-sm btn-danger">Delete</a>
+                                <a href="@Url.Action("Details", new { id = employee.Id })" class="btn btn-sm btn-info" title="Details"><i class="fas fa-info-circle"></i></a>
+                                <a href="@Url.Action("Edit", new { id = employee.Id })" class="btn btn-sm btn-primary" title="Edit"><i class="fas fa-edit"></i></a>
+                                <a href="@Url.Action("Delete", new { id = employee.Id })" class="btn btn-sm btn-danger" title="Delete"><i class="fas fa-trash-alt"></i></a>
                             </div>
                         </td>
                     </tr>

@@ -1,6 +1,9 @@
 ﻿using CRDU_eMP.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CRDU_eMP.Controllers
 {
@@ -17,12 +20,10 @@ namespace CRDU_eMP.Controllers
         {
             List<Employee> employees = _context.Employees.ToList();
             return View(employees);
-
-            
         }
+
         public IActionResult Details(int? id)
         {
-
             if (id == null)
             {
                 return NotFound();
@@ -50,11 +51,15 @@ namespace CRDU_eMP.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Employee employee)
         {
-            if (ModelState.IsValid)
+            try
             {
                 _context.Add(employee);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                return Content($"Something went wrong\n {ex}");
             }
 
             // If the model state is not valid, we need to repopulate the ViewBag with the list of offices again.
@@ -63,7 +68,6 @@ namespace CRDU_eMP.Controllers
 
             return View(employee);
         }
-
 
         // GET: Employee/Edit/5
         public IActionResult Edit(int? id)
@@ -86,21 +90,32 @@ namespace CRDU_eMP.Controllers
             return View(employee);
         }
 
-        // POST: Employee/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,Name,Age,Salary,Email,Password,OfficeId")] Employee employee)
+        public IActionResult Edit(int id, Employee employee)
         {
+            Employee OldEmp = _context.Employees.SingleOrDefault(s => s.Id == employee.Id);
+
             if (id != employee.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            try
             {
-                _context.Update(employee);
+                OldEmp.Name = employee.Name;
+                OldEmp.Age = employee.Age;
+                OldEmp.Salary = employee.Salary;
+                OldEmp.Email = employee.Email;
+                OldEmp.OfficeId = employee.OfficeId;
+
+                _context.Update(OldEmp); // Use OldEmp instead of employee here
                 _context.SaveChanges();
                 return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                return Content($"Something went wrong\n {ex}");
             }
 
             // If the model state is not valid, we need to repopulate the ViewBag with the list of offices again.
@@ -109,8 +124,6 @@ namespace CRDU_eMP.Controllers
 
             return View(employee);
         }
-
-
 
         // GET: Employee/Delete/5
         public IActionResult Delete(int? id)
@@ -145,11 +158,5 @@ namespace CRDU_eMP.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
-
-
-
-
-
-
     }
 }
