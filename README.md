@@ -11,11 +11,15 @@ CRUD_EMP is a simple CRUD (Create, Read, Update, Delete) application built using
 
 # Technologies Used :
 
-ASP.NET Core MVC
-Entity Framework Core
-Microsoft SQL Server (Database)
-HTML/CSS
-Bootstrap (for styling)
+1- ASP.NET Core MVC
+
+2- Entity Framework Core
+
+3- Microsoft SQL Server (Database)
+
+4- HTML/CSS
+
+5 - Bootstrap (for styling)
 
 # Notes :
 
