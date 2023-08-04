@@ -1,0 +1,36 @@
+﻿@model Office
+
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Office Details</h2>
+
+        @if (Model != null)
+        {
+            <table class="table table-bordered">
+                <tr>
+                    <th>Id</th>
+                    <td>@Model.Id</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>@Model.Name</td>
+                </tr>
+                <tr>
+                    <th>Location</th>
+                    <td>@Model.Location</td>
+                </tr>
+              
+            </table>
+        }
+        else
+        {
+            <p>Office not found.</p>
+        }
+
+        <p>
+            <a href="@Url.Action("Index")" class="btn btn-dark">Back to List</a>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { @class = "btn btn-danger" })
+        </p>
+    </div>
+</div>
