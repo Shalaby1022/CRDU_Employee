@@ -5,8 +5,8 @@
 
 <h2>Create New Employee</h2>
 
-@using (Html.BeginForm("Create", "Employee", FormMethod.Post))
-{
+<form asp-controller="Employee" asp-action="Create" method="post">
+
     <div class="form-group">
         <label for="Name">Name</label>
         @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
@@ -42,4 +42,6 @@
         <button type="submit" class="btn btn-primary">Save</button>
         <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
     </div>
-}
+    </form>
+
+

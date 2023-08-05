@@ -29,7 +29,7 @@ namespace CRDU_eMP.Controllers
                 return NotFound();
             }
 
-            var employee = _context.Employees.FirstOrDefault(e => e.Id == id);
+            Employee employee = _context.Employees.FirstOrDefault(e => e.Id == id);
             if (employee == null)
             {
                 return NotFound();

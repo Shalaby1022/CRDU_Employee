@@ -1,8 +1,8 @@
-﻿@model CRDU_eMP.Models.Employee // Replace with the correct namespace for your model
+﻿@model CRDU_eMP.Models.Project
 
 <div class="card">
     <div class="card-body">
-        <h2 class="card-title">Employee Details</h2>
+        <h2 class="card-title">Project Details</h2>
 
         @if (Model != null)
         {
@@ -16,26 +16,14 @@
                     <td>@Model.Name</td>
                 </tr>
                 <tr>
-                    <th>Age</th>
-                    <td>@Model.Age</td>
-                </tr>
-                <tr>
-                    <th>Salary</th>
-                    <td>@Model.Salary</td>
-                </tr>
-                <tr>
-                    <th>Email</th>
-                    <td>@Model.Email</td>
-                </tr>
-                <tr>
-                    <th>Office Id</th>
-                    <td>@Model.OfficeId</td>
+                    <th>Description</th>
+                    <td>@Model.Description</td>
                 </tr>
             </table>
         }
         else
         {
-            <p>Employee not found.</p>
+            <p>Project not found.</p>
         }
 
         <p>

@@ -1,0 +1,42 @@
+﻿@model List<CRDU_eMP.Models.Project>
+
+<div class="container">
+    <h2 class="mb-4">Project List</h2>
+
+    @if (Model.Count > 0)
+    {
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var project in Model)
+                {
+                    <tr class="@( project.Id % 2 == 0 ? "table-primary" : "table-info")">
+                        <td>@project.Id</td>
+                        <td>@project.Name</td>
+                        <td>@project.Description</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Actions">
+                                <a asp-controller="Project" asp-action="Details" asp-route-id="@project.Id" class="btn btn-sm btn-info" title="Details"><i class="fas fa-info-circle"></i></a>
+                                <a asp-controller="Project" asp-action="Edit" asp-route-id="@project.Id" class="btn btn-sm btn-primary" title="Edit"><i class="fas fa-edit"></i></a>
+                                <a asp-controller="Project" asp-action="Delete" asp-route-id="@project.Id" class="btn btn-sm btn-danger" title="Delete"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No projects found.</p>
+    }
+
+    <p><a asp-controller="Project" asp-action="Create" class="btn btn-success">Create New Project</a></p>
+</div>

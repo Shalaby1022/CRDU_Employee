@@ -1,4 +1,4 @@
-﻿@model List<CRDU_eMP.Models.Office>
+﻿@model List<CRDU_eMP.Models.Office> // Replace with the correct namespace for your model
 
 <div class="container">
     <h2 class="mb-4">Office List</h2>
@@ -15,17 +15,17 @@
                 </tr>
             </thead>
             <tbody>
-                @for (var i = 0; i < Model.Count; i++)
+                @foreach (var office in Model)
                 {
-                    <tr class="@(i % 2 == 0 ? "table-primary" : "table-info")">
-                        <td>@Model[i].Id</td>
-                        <td>@Model[i].Name</td>
-                        <td>@Model[i].Location</td>
+                    <tr class="@(office.Id % 2 == 0 ? "table-primary" : "table-info")">
+                        <td>@office.Id</td>
+                        <td>@office.Name</td>
+                        <td>@office.Location</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Actions">
-                                <a href="@Url.Action("Details", new { id = Model[i].Id })" class="btn btn-sm btn-info" title="Details"><i class="fas fa-info-circle"></i></a>
-                                <a href="@Url.Action("Edit", new { id = Model[i].Id })" class="btn btn-sm btn-primary" title="Edit"><i class="fas fa-edit"></i></a>
-                                <a href="@Url.Action("Delete", new { id = Model[i].Id })" class="btn btn-sm btn-danger" title="Delete"><i class="fas fa-trash-alt"></i></a>
+                                <a asp-action="Details" asp-route-id="@office.Id" class="btn btn-sm btn-info" title="Details"><i class="fas fa-info-circle"></i></a>
+                                <a asp-action="Edit" asp-route-id="@office.Id" class="btn btn-sm btn-primary" title="Edit"><i class="fas fa-edit"></i></a>
+                                <a asp-action="Delete" asp-route-id="@office.Id" class="btn btn-sm btn-danger" title="Delete"><i class="fas fa-trash-alt"></i></a>
                             </div>
                         </td>
                     </tr>
@@ -38,5 +38,5 @@
         <p>No offices found.</p>
     }
 
-    <p><a href="@Url.Action("Create")" class="btn btn-success">Create New Office</a></p>
+    <p><a asp-action="Create" class="btn btn-success">Create New Office</a></p>
 </div>

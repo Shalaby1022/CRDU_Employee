@@ -1,4 +1,4 @@
-﻿@model Employee
+﻿@model CRDU_eMP.Models.Employee // Replace with the correct namespace for your model
 
 <h2>Delete Employee</h2>
 
@@ -44,11 +44,10 @@
         </dd>
     </dl>
 
-    @using (Html.BeginForm("DeleteConfirmed", "Employee", new { id = Model.Id }, FormMethod.Post))
-    {
+    <form asp-action="DeleteConfirmed" asp-controller="Employee" asp-route-id="@Model.Id" method="post">
         <p>
-            <input type="submit" value="Delete" class="btn btn-danger" /> |
-            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary" })
+            <button type="submit" class="btn btn-danger">Delete</button> |
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
         </p>
-    }
+    </form>
 </div>
