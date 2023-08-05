@@ -1,6 +1,18 @@
 # CRUD_Employee
 CRUD_EMP is a simple CRUD (Create, Read, Update, Delete) application built using ASP.NET Core MVC. It allows you to manage a list of employees, including their details such as name, age, salary, email, office, and password.
 
+# Recent Changes:
+
+1- Added employee and office details to the navigation bar for easy access.
+
+2- Implemented CRUD operations for managing offices, allowing users to add, view, edit, and delete office records.
+
+3- Styled the website using Bootstrap to improve its appearance and user experience.
+
+4 - Updated the spacing and layout to enhance readability and visual appeal.
+
+With these recent updates, the CRUD_EMP application is now more user-friendly, and visually appealing, and allows for efficient management of both employees and offices.
+
 # Features :
 
 1- View a list of all employees with basic details.
@@ -32,3 +44,5 @@ CRUD_EMP is a simple CRUD (Create, Read, Update, Delete) application built using
 2- The password field is stored in the database as plaintext. For production applications, it's essential to use proper encryption/hashing for passwords.
 
 3- The application does not implement user authentication and authorization. This feature should be added in a real-world application to ensure proper security.
+
+
