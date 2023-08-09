@@ -35,6 +35,7 @@ namespace CRDU_eMP.Controllers
                 employee.OfficeId = addEmpView.Off_Id;
                 _context.Employees.Add(employee);
                 _context.SaveChanges();
+                TempData["Message"] = "Data has been saved successfully!";
                 return RedirectToAction("Index", "Employee");
             }
             else
